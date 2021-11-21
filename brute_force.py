@@ -15,13 +15,8 @@ for i in range(int(n)):
             coordinates[j] = (i, line.index(j))
             delivery_points.append(j)
 
-
-#print(coordinates)
-#print(delivery_points)
-
 delivery_points.remove('R')
 shortest_cost = float('inf')
-
 
 for k in list(permutations(delivery_points)):
     current_cost = 0
@@ -41,5 +36,4 @@ for k in list(permutations(delivery_points)):
         shortest_cost = current_cost
         route = k
 
-#print(shortest_cost)
 print(' '.join(route[1:-1]))
