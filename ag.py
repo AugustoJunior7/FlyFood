@@ -53,12 +53,12 @@ def rank(population):  #função auxiliar
     return population
 
 
-def selection(population, m):  #seleção por torneio
+def selection(population, m, k):  #seleção por torneio
     most_adaptable = []
     tournament = []
 
     for i in range(m):
-        participants = random.sample(population, 5)
+        participants = random.sample(population, k)
         for j in participants:
             tournament.append((fitness(j), j))
         champion = rank(tournament)[0][1]
@@ -108,7 +108,7 @@ def ag(n):
     lc_list = []
 
     while gc < n:
-        s = selection(p, 20)              #seleção dos 20 mais aptos
+        s = selection(p, 20, 5)              #seleção dos 20 mais aptos
         p = []
         for k in range(50):
             p1 = random.choice(s)        #escolha do pai 1
@@ -124,7 +124,7 @@ def ag(n):
 
         gc += 1
 
-        current_solution = selection(p, 1)[0]
+        current_solution = selection(p, 1, 100)[0]
 
         if fitness(current_solution) < lower_cost:
             lower_cost = fitness(current_solution)
